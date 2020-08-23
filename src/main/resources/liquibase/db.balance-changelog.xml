@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog 
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd"> 
+  <changeSet author="udin" id="balance-1.0">
+    <createTable tableName="tb_balance">
+      <column name="id_balance" type="VARCHAR(10)">
+        <constraints primaryKey="true" unique="false"/>
+      </column>
+      <column name="balance" type="DOUBLE"/>
+      <column name="id_currency" type="INT"/>
+      <column name="account_number" type="VARCHAR(10)"/>
+    </createTable>
+    
+  </changeSet>
+  
+          <changeSet author="udin" id="balance-1.0-1">
+		<addForeignKeyConstraint
+			baseColumnNames="id_currency" baseTableName="tb_balance"
+			constraintName="fk_id_currency2" referencedColumnNames="id_currency"
+			referencedTableName="tb_currency" />
+	</changeSet>  
+<changeSet author="udin"
+		id="balance-1.0-2">
+		<addForeignKeyConstraint
+			baseColumnNames="account_number" baseTableName="tb_balance"
+			constraintName="fk_account_number2" referencedColumnNames="account_number"
+			referencedTableName="tb_account" />
+	</changeSet>
+ <changeSet author="udin" id="balance-1.0-3">
+    <dropForeignKeyConstraint baseTableName="tb_balance" constraintName="fk_id_currency2"/>
+</changeSet>
+<changeSet author="udin" id="balance-1.0-4">
+    <modifyDataType 
+            columnName="id_currency"
+            newDataType="VARCHAR(5)"
+            schemaName="wallx"
+            tableName="tb_balance"/>
+</changeSet>
+<changeSet author="udin" id="balance-1.0-5">
+    <renameColumn 
+            columnDataType="VARCHAR(5)"
+            newColumnName="description"
+            oldColumnName="id_currency"
+            remarks="A String"
+            schemaName="wallx"
+            tableName="tb_balance"/>
+</changeSet>
+<changeSet author="udin" id="balance-1.0-6">
+    <dropForeignKeyConstraint baseTableName="tb_balance" constraintName="fk_account_number2"/>
+</changeSet>
+
+</databaseChangeLog> 

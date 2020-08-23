@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+  	<include file="src/main/resources/liquibase/db.image-changelog.xml"/> 
+    <include file="src/main/resources/liquibase/db.status_type-changelog.xml"/>
+    <include file="src/main/resources/liquibase/db.role_type-changelog.xml"/>
+    <include file="src/main/resources/liquibase/db.transaction_type-changelog.xml"/>
+    <include file="src/main/resources/liquibase/db.wallet_type-changelog.xml"/>
+    <include file="src/main/resources/liquibase/db.bank-changelog.xml"/>
+    <include file="src/main/resources/liquibase/db.currency-changelog.xml"/>
+    <include file="src/main/resources/liquibase/db.dummy-changelog.xml"/>
+    <include file="src/main/resources/liquibase/db.forex_balance-changelog.xml"/> 
+    <include file="src/main/resources/liquibase/db.user-changelog.xml"/>
+    <include file="src/main/resources/liquibase/db.backoffice-changelog.xml"/>
+	<include file="src/main/resources/liquibase/db.customer-changelog.xml"/> 
+	<include file="src/main/resources/liquibase/db.trader-changelog.xml"/>
+	<include file="src/main/resources/liquibase/db.transaction-changelog.xml"/>
+	<include file="src/main/resources/liquibase/db.transaction_forex-changelog.xml"/>
+	<include file="src/main/resources/liquibase/db.outstanding-changelog.xml"/>
+ 	<include file="src/main/resources/liquibase/db.account-changelog.xml"/> 
+ 	<include file="src/main/resources/liquibase/db.balance-changelog.xml"/>
+  	<include file="src/main/resources/liquibase/db.wallet-changelog.xml"/>
+  	<include file="src/main/resources/liquibase/db.walletaccount-changelog.xml"/>
+ 	<include file="src/main/resources/liquibase/db.accountbalance-changelog.xml"/>
+</databaseChangeLog> 

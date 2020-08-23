@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog 
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+  <changeSet author="udin" id="transaction-1.0">
+    <createTable tableName="tb_transaction">
+      <column name="id_transaction" type="VARCHAR(10)">
+        <constraints primaryKey="true" unique="false"/>
+      </column>
+      <column name="account_number_debit" type="VARCHAR(10)"/>
+      <column name="account_number_credit" type="VARCHAR(10)"/>
+      <column name="date" type="DATE"/>
+      <column name="description" type="VARCHAR(20)"/>
+      <column name="amount" type="DOUBLE"/>
+      <column name="id_transaction_type" type="INT"/>
+      <column name="id_currency" type="INT"/>
+      <column name="id_bank" type="VARCHAR(10)"/>
+    </createTable>
+    </changeSet>
+	
+	
+	  <changeSet author="udin"
+		id="transaction-1.0-1">
+		<addForeignKeyConstraint
+			baseColumnNames="id_transaction_type" baseTableName="tb_transaction"
+			constraintName="fk_id_transaction_type_2" referencedColumnNames="id_transaction_type"
+			referencedTableName="tb_transaction_type" />
+	</changeSet> 
+   <changeSet author="udin"
+		id="transaction-1.0-2">
+		<addForeignKeyConstraint
+			baseColumnNames="id_currency" baseTableName="tb_transaction"
+			constraintName="fk_id_currency_3" referencedColumnNames="id_currency"
+			referencedTableName="tb_currency" />
+	</changeSet>
+	<changeSet author="udin"
+		id="transaction-1.0-3">
+		<addForeignKeyConstraint
+			baseColumnNames="id_bank" baseTableName="tb_transaction"
+			constraintName="fk_id_bank" referencedColumnNames="id_bank"
+			referencedTableName="tb_bank" />
+	</changeSet>  
+  <changeSet author="udin" id="transaction-1.0-4">
+    <dropForeignKeyConstraint baseTableName="tb_transaction" constraintName="fk_id_currency_3"/>
+</changeSet>
+  <changeSet author="udin" id="transaction-1.0-5">
+    <dropColumn 
+            columnName="id_currency"
+            schemaName="wallx"
+            tableName="tb_transaction"/>
+</changeSet>
+  
+</databaseChangeLog> 

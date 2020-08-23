@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog 
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+  <changeSet author="udin" id="outstanding-1.0">
+    <createTable tableName="tb_outstanding">
+      <column name="id_outstanding" type="INT">
+        <constraints primaryKey="true" unique="false"/>
+      </column>
+      <column name="date" type="DATE"/>
+      <column name="outstanding" type="DOUBLE"/>
+      <column name="id_trader" type="VARCHAR(10)"/>
+      <column name="id_currency" type="INT"/>
+    </createTable>
+    
+  </changeSet>
+    <changeSet author="udin"
+		id="outstanding-1.0-1">
+		<addForeignKeyConstraint
+			baseColumnNames="id_trader" baseTableName="tb_outstanding"
+			constraintName="fk_id_trader_2" referencedColumnNames="id_trader"
+			referencedTableName="tb_trader" />
+	</changeSet> 
+	<changeSet author="udin"
+		id="outstanding-1.0-2">
+		<addForeignKeyConstraint
+			baseColumnNames="id_currency" baseTableName="tb_outstanding"
+			constraintName="fk_id_currency_2" referencedColumnNames="id_currency"
+			referencedTableName="tb_currency" />
+	</changeSet>  
+	<changeSet author="rafie" id="outstanding-1.0-2">
+    	<dropForeignKeyConstraint baseTableName="tb_outstanding" constraintName="fk_id_currency_2"/>
+	</changeSet>
+	<changeSet author="rafie" id="outstanding-1.0-3">
+    <dropColumn 
+            columnName="id_currency"
+            schemaName="wallx"
+            tableName="tb_outstanding"/>
+	</changeSet>
+	 <changeSet author="udin" id="outstanding-1.0-3">
+    <addAutoIncrement 
+            columnDataType="int"
+            columnName="id_outstanding"
+            incrementBy="1"
+            schemaName="wallx"
+            startWith="1"
+            tableName="tb_outstanding"/>
+</changeSet>
+</databaseChangeLog> 

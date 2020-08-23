@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog 
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+  <changeSet author="udin" id="account-1.0">
+    <createTable tableName="tb_account">
+      <column name="account_number" type="VARCHAR(10)">
+        <constraints primaryKey="true" unique="false"/>
+      </column>
+      <column name="cashtag" type="VARCHAR(20)"/>
+      <column name="open_date" type="DATE"/>
+      <column name="id_status_type" type="INT"/>
+      <column name="cif" type="VARCHAR(10)"/>
+    </createTable>
+
+  </changeSet>
+  
+     <changeSet author="udin"
+		id="account-1.0-1">
+		<addForeignKeyConstraint
+			baseColumnNames="cif" baseTableName="tb_account"
+			constraintName="fk_cif" referencedColumnNames="cif"
+			referencedTableName="tb_customer" />
+	</changeSet> 
+	<changeSet author="udin"
+		id="account-1.0-2">
+		<addForeignKeyConstraint
+			baseColumnNames="id_status_type" baseTableName="tb_account"
+			constraintName="fk_id_status_type" referencedColumnNames="id_status_type"
+			referencedTableName="tb_status_type" />
+	</changeSet>
+<changeSet author="trader-1.0-3" id="account-1.0-2">
+    <addColumn 
+            schemaName="wallx"
+            tableName="tb_account">
+        <column name="balance" type="DOUBLE"/>
+    </addColumn>
+</changeSet>
+
+
+<!--  <changeSet author="liquibase-docs" id="insert-example">
+    <insert 
+            schemaName="wallx"
+            tableName="tb_account">
+        <column name="cashtag"  value="@jghf"/>
+      <column name="id_status_type"  value="1"/>
+      <column name="cif"  value="1"/>
+      <column name="balance"  value="290"/>
+    </insert>
+</changeSet>-->
+
+
+<changeSet author="liquibase-docs" id="delete-example">
+    <delete 
+            schemaName="wallx"
+            tableName="tb_account">
+        <where>account_number = 2</where>
+    </delete>
+</changeSet>
+
+
+
+
+</databaseChangeLog> 

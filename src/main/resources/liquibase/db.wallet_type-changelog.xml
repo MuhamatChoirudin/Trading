@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog 
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+  <changeSet author="udin" id="wallet_type-1.0">
+    <createTable tableName="tb_wallet_type">
+      <column name="id_wallet_type" type="INT">
+        <constraints primaryKey="true" unique="false"/>
+      </column>
+      <column name="description" type="VARCHAR(20)"/>
+    </createTable>
+  </changeSet>
+  <changeSet author="udin" id="wallet_type-1.0-1">
+    <addAutoIncrement 
+            columnDataType="int"
+            columnName="id_wallet_type"
+            incrementBy="1"
+            schemaName="wallx"
+            startWith="1"
+            tableName="tb_wallet_type"/>
+</changeSet>
+  <changeSet author="udin" id="wallet_type-1.0-2">
+    <addColumn 
+            schemaName="wallx"
+            tableName="tb_wallet_type">
+        <column name="open_date" type="DATE"/>
+    </addColumn>
+</changeSet>
+</databaseChangeLog> 

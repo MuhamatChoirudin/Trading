@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog 
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd"> 
+  <changeSet author="udin" id="forex_balance-1.0">
+    <createTable tableName="tb_forex_balance">
+      <column name="id_forex_balance" type="INT">
+        <constraints primaryKey="true" unique="false"/>
+      </column>
+      <column name="forex_balance" type="DOUBLE"/>
+      <column name="id_currency" type="INT"/>
+    </createTable>
+    
+  </changeSet>
+  
+          <changeSet author="udin"
+		id="forex_balance-1.0-1">
+		<addForeignKeyConstraint
+			baseColumnNames="id_currency" baseTableName="tb_forex_balance"
+			constraintName="fk_id_currency3" referencedColumnNames="id_currency"
+			referencedTableName="tb_currency" />
+	</changeSet>  
+ 
+</databaseChangeLog> 

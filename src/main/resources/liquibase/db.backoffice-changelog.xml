@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+	<changeSet author="udin" id="account-1.0">
+		<createTable tableName="tb_backoffice">
+			<column name="id_backoffice" type="VARCHAR(10)">
+				<constraints primaryKey="true" unique="false" />
+			</column>
+			<column name="firtname" type="VARCHAR(20)" />
+			<column name="lastname" type="VARCHAR(20)" />
+			<column name="phone_number" type="VARCHAR(15)" />
+			<column name="address" type="VARCHAR(40)" />
+			<column name="open_date" type="DATE" />
+			<column name="id_user" type="VARCHAR(10)" />
+			<column name="count_id_backoffice" type="INT" />
+		</createTable>
+	</changeSet>
+	<changeSet author="udin" id="backoffice-1.0-1">
+		<addForeignKeyConstraint
+			baseColumnNames="id_user" baseTableName="tb_backoffice"
+			constraintName="fk_id_user_2" referencedColumnNames="id_user"
+			referencedTableName="tb_user" />
+	</changeSet>
+	<changeSet author="udin" id="backoffice-1.0-2">
+		<renameColumn columnDataType="VARCHAR(20)"
+			newColumnName="firstname" oldColumnName="firtname" remarks="A String"
+			schemaName="wallx" tableName="tb_backoffice" />
+	</changeSet>
+</databaseChangeLog> 

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog 
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+  <changeSet author="udin" id="dummy-1.0">
+    <createTable tableName="tb_dummy">
+      <column name="id_dummy" type="VARCHAR(10)">
+        <constraints primaryKey="true" unique="false"/>
+      </column>
+      <column name="cashtag" type="VARCHAR(20)"/>
+      <column name="bank_name" type="VARCHAR(20)"/>
+      <column name="balance" type="DOUBLE"/>
+    </createTable>
+  </changeSet>
+  <changeSet author="udin" id="dummy-1.0-1">
+    <renameColumn 
+            columnDataType="VARCHAR(20)"
+            newColumnName="name"
+            oldColumnName="cashtag"
+            remarks="A String"
+            schemaName="wallx"
+            tableName="tb_dummy"/>
+</changeSet>
+<changeSet author="udin" id="dummy-1.0-2">
+    <modifyDataType 
+            columnName="id_dummy"
+            newDataType="int"
+            schemaName="wallx"
+            tableName="tb_dummy"/>
+</changeSet>
+<changeSet author="udin" id="dummy-1.0-3">
+    <dropColumn 
+            columnName="bank_name"
+            schemaName="wallx"
+            tableName="tb_dummy"/>
+</changeSet>
+</databaseChangeLog> 

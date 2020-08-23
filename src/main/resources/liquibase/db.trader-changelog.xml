@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog 
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+  <changeSet author="udin" id="trader-1.0">
+    <createTable tableName="tb_trader">
+      <column name="id_trader" type="VARCHAR(10)">
+        <constraints primaryKey="true" unique="false"/>
+      </column>
+      <column name="name_trader" type="VARCHAR(20)"/>
+      <column name="cif" type="VARCHAR(10)"/>
+      <column name="id_forex_balance" type="INT"/>
+    </createTable>
+
+  </changeSet>
+      <changeSet author="udin"
+		id="trader-1.0-1">
+		<addForeignKeyConstraint
+			baseColumnNames="cif" baseTableName="tb_trader"
+			constraintName="fk_cif_2" referencedColumnNames="cif"
+			referencedTableName="tb_customer" />
+	</changeSet>   
+<changeSet author="udin"
+		id="trader-1.0-2">
+		<addForeignKeyConstraint
+			baseColumnNames="id_forex_balance" baseTableName="tb_trader"
+			constraintName="fk_id_forex_balance" referencedColumnNames="id_forex_balance"
+			referencedTableName="tb_forex_balance" />
+	</changeSet>
+<changeSet author="trader-1.0-3" id="trader-1.0-2">
+    <addColumn 
+            schemaName="wallx"
+            tableName="tb_trader">
+        <column name="id_status_type" type="INT"/>
+    </addColumn>
+</changeSet>
+
+<changeSet author="udin"
+		id="trader-1.0-4">
+		<addForeignKeyConstraint
+			baseColumnNames="id_status_type" baseTableName="tb_trader"
+			constraintName="fk_id_status_type2" referencedColumnNames="id_status_type"
+			referencedTableName="tb_status_type" />
+	</changeSet>
+	<changeSet author="trader-1.0-5" id="trader-1.0-2">
+    <addColumn 
+            schemaName="wallx"
+            tableName="tb_trader">
+        <column name="balance" type="DOUBLE"/>
+    </addColumn>
+</changeSet>
+<changeSet author="udin" id="trader-1.0-6">
+    <dropForeignKeyConstraint baseTableName="tb_trader" constraintName="fk_id_forex_balance"/>
+</changeSet>
+<changeSet author="udin" id="trader-1.0-7">
+    <dropColumn 
+            columnName="id_forex_balance"
+            schemaName="wallx"
+            tableName="tb_trader"/>
+</changeSet>
+</databaseChangeLog> 
